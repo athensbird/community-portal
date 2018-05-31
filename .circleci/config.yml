@@ -10,8 +10,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - dependencies-cache-{{ checksum "package.json" }}
-            - dependencies-cache
+            - dependencies-cache-{{ checksum "./functions/package.json" }}
+            - dependencies-cachep
 
       - run:
           name: Install dependencies
@@ -35,5 +35,5 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: dependencies-cache-{{ checksum "package.json" }}
+          key: dependencies-cache-{{ checksum "./functions/package.json" }}
 
