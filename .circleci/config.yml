@@ -24,7 +24,6 @@ jobs:
           name: run tests
           command: |
             cd functions
-            npm run test --coverage
 
       - run:
           name: deploy application
