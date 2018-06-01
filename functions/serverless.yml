@@ -1,7 +1,7 @@
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: prod
+  stage: ${opt:stage, 'dev'}
   region: us-east-1
 
 package:
@@ -10,10 +10,9 @@ package:
     - coverage/**
     - .circleci/**
 
-custom:
-  stagename: $(opt:stage, 'prod')
-
-service: test-endpoint
+service: 
+  name: test-endpoint
+  stackname: ${self:service.name}-${self:provider.stage}
 
 functions:
   - ${file(./handlers/projects/projects.yml)}
