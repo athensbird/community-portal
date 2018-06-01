@@ -24,7 +24,8 @@ jobs:
           name: run tests
           command: |
             cd functions
-
+            npm test
+            
       - run:
           name: deploy application
           command: |
