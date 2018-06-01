@@ -12,7 +12,7 @@ package:
 
 service: 
   name: test-endpoint
-  stackname: ${self:service.name}-${self:provider.stage}
+
 
 functions:
   - ${file(./handlers/projects/projects.yml)}
