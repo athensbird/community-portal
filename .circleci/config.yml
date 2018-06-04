@@ -51,14 +51,14 @@ jobs:
 
 workflows:
   version: 1
-    process:
-      jobs:
-        - build
-        - deploy
-          requires: 
-            - build
-          filters:
-            branches:
-              only:
-                - master
-                - testCircle
+  process:
+    jobs:
+      - build
+      - deploy
+        requires: 
+          - build
+        filters:
+          branches:
+            only:
+              - master
+              - testCircle
