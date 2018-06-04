@@ -45,6 +45,7 @@ jobs:
       - run:
           name: deploy application
           command: |
+            npm install 
             echo ${CIRCLE_BRANCH}
             sls deploy --stage $STAGE
 
