@@ -2,16 +2,14 @@ version: 1
 jobs:
   build:
     working_directory: ~/community-portal
+    environment: 
+      STAGE: "dev"
 
     docker:
       - image: circleci/node:10.3
 
     steps:
       - checkout
-      - run:
-          name: Setup environmental variables
-          environment: 
-            STAGE: "dev"
 
       - restore_cache:
           keys:
