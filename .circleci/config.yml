@@ -28,7 +28,6 @@ jobs:
       - run:
           name: deploy application
           command: |
-            cd functions
             if ["${CIRCLE_BRANCH}" == "staging"] then
               sls deploy --stage staging;
             elif ["${CIRCLE_BRANCH}" == "master"] then
