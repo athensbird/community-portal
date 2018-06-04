@@ -33,6 +33,7 @@ jobs:
           name: deploy application
           command: |
             cd functions
+            echo ${CIRCLE_BRANCH}
             sls deploy --stage $STAGE
           
       - save_cache:
