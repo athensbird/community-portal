@@ -28,16 +28,36 @@ jobs:
           command: |
             cd functions
             npm test
+          
+  deploy:
+    working_directory: ~/community-portal
 
+    docker:
+      - image: circleci/node:10.3
+
+    steps:
       - run:
           name: deploy application
           command: |
             cd functions
             echo ${CIRCLE_BRANCH}
             sls deploy --stage $STAGE
-          
+
       - save_cache:
           paths:
             - node_modules
           key: dependencies-cache-{{ checksum "./functions/package.json" }}
 
+
+  workflows:
+    version: 1
+      jobs:
+        - build
+        - deploy
+          requires: 
+            - build
+          filters:
+            branches:
+              only:
+                - master
+                - testCircle
