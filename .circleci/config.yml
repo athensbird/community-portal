@@ -32,7 +32,7 @@ jobs:
               sls deploy --stage staging
             elif [ "${CIRCLE_BRANCH}" == "master" ]; then
               sls deploy --state prod
-            else then 
+            else  
               sls deploy --state dev
             fi
           
