@@ -7,8 +7,8 @@ jobs:
       - image: circleci/node:10.3
 
     steps:
-      - checkout
-          path: ~/community-portal/
+      - checkout:
+        path: ~/community-portal/
 
       - restore_cache:
           keys:
