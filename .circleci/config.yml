@@ -28,9 +28,15 @@ jobs:
           command: |
             cd functions
             npm test
+            
+      - save_cache:
+          paths:
+            - node_modules
+          key: dependencies-cache-{{ checksum "./functions/package.json" }}
+
           
   deploy:
-    working_directory: ~/community-portal
+    working_directory: ~/community-portal/functions
 
     docker:
       - image: circleci/node:10.3
@@ -39,14 +45,8 @@ jobs:
       - run:
           name: deploy application
           command: |
-            ls
             echo ${CIRCLE_BRANCH}
             sls deploy --stage $STAGE
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: dependencies-cache-{{ checksum "./functions/package.json" }}
 
 workflows:
   version: 1
