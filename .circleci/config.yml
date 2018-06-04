@@ -48,17 +48,16 @@ jobs:
             - node_modules
           key: dependencies-cache-{{ checksum "./functions/package.json" }}
 
-
 workflows:
   version: 1
-  process:
+  build_and_test:
     jobs:
       - build
-      - deploy
-        requires: 
-          - build
-        filters:
-          branches:
-            only:
-              - master
-              - testCircle
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+          
