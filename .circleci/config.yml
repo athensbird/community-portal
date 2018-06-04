@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/community-portal
     environment: 
-      STAGE: "dev"
+      STAGE: "staging"
 
     docker:
       - image: circleci/node:10.3
