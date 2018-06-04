@@ -56,6 +56,6 @@ workflows:
       - deploy:
           requires:
             - build
-                filters:
-                  branches:
-                    only: testCircle
+          filters:
+            branches:
+              only: testCircle
