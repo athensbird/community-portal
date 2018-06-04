@@ -49,8 +49,9 @@ jobs:
           key: dependencies-cache-{{ checksum "./functions/package.json" }}
 
 
-  workflows:
-    version: 1
+workflows:
+  version: 1
+    process:
       jobs:
         - build
         - deploy
