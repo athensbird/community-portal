@@ -39,7 +39,7 @@ jobs:
       - run:
           name: deploy application
           command: |
-            cd functions
+            ls
             echo ${CIRCLE_BRANCH}
             sls deploy --stage $STAGE
 
