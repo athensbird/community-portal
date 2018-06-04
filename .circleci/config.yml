@@ -2,8 +2,6 @@ version: 1
 jobs:
   build:
     working_directory: ~/community-portal
-    environment: 
-      STAGE: "staging"
 
     docker:
       - image: circleci/node:10.3
@@ -37,6 +35,8 @@ jobs:
           
   deploy:
     working_directory: ~/community-portal/functions
+    environment: 
+      STAGE: "staging"
 
     docker:
       - image: circleci/node:10.3
