@@ -27,7 +27,15 @@ jobs:
 
       - run:
           name: deploy application
-          command: sls deploy
+          command: |
+            cd functions
+            if ["${CIRCLE_BRANCH}" == "staging"] then
+              sls deploy --stage staging;
+            elif ["${CIRCLE_BRANCH}" == "master"] then
+              sls deploy --state prod;
+            else 
+              sls deploy --state dev;
+            fi
           
       - save_cache:
           paths:
